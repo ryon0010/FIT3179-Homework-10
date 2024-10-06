@@ -1,0 +1,30 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": ".data/hh_income_state.csv",
+      "format": {"type": "csv"}
+    },
+    "mark": "line",
+    "encoding": {
+      "x": {"field": "date", "type": "temporal", "title": "Year"},
+      "y": {"field": "income_mean", "type": "quantitative", "title": "Mean Income"},
+      "color": {"field": "state", "type": "nominal", "title": "State"},
+      "tooltip": [
+        {"field": "state", "type": "nominal", "title": "State"},
+        {"field": "date", "type": "temporal", "title": "Year"},
+        {"field": "income_mean", "type": "quantitative", "title": "Mean Income"}
+      ]
+    },
+    "selection": {
+      "state_filter": {
+        "type": "multi",
+        "fields": ["state"],
+        "bind": {"input": "select", "options": ["All", "Johor", "Kedah", "Kelantan", "Melaka", "Negeri Sembilan", "Pahang", "Perak", "Perlis", "Penang", "Sabah", "Sarawak", "Selangor", "Terengganu"], "name": "Select State:"}
+      }
+    },
+    "transform": [
+      {"filter": {"or": [{"selection": "state_filter"}]}}
+    ],
+    "title": "Mean Household Income Over Time by State in Malaysia"
+}
+  
