@@ -1,8 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Arrivals by State in Malaysia 2024",
   "width": 1000,
-  "height": 350,
-  "projection":  {"type": "mercator"},
+  "height": 400,
+  "projection": {"type": "mercator"},
   "data": {
     "url": "ne_1.json",
     "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
@@ -12,7 +13,7 @@
       "lookup": "properties.name",
       "from": {
         "data": {
-          "url": "hies_state.csv"
+          "url": "hh_income_state.csv"
         },
         "key": "state",
         "fields": ["income_mean"]
@@ -24,17 +25,11 @@
     "color": {
       "field": "income_mean",
       "type": "quantitative",
-      "scale": {"scheme": "blues"},
-      "legend": {
-        "title": "Mean Household Income",
-        "orient": "bottom",     
-        "direction": "horizontal"
-      }  
+      "scale": {"scheme":"yellowgreenblue"}
     },
     "tooltip": [
       {"field": "properties.name", "type": "nominal", "title": "State"},
-      {"field": "income_mean", "type": "quantitative", "title": "income_mean"}
+      {"field": "income_mean", "type": "quantitative", "title": "Mean Income"}
     ]
   }
 }
-

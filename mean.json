@@ -1,0 +1,36 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 1000,
+    "height": 50,
+    "description": "Area chart showing the overall mean household income over time across all states in Malaysia.",
+    "data": {
+      "url": "hh_income_state.csv",
+      "format": {"type": "csv"}
+    },
+    "transform": [
+      {
+        "aggregate": [{"op": "mean", "field": "income_mean", "as": "Overall_Mean_Income"}],
+        "groupby": ["year"]               
+      }
+    ],
+    "mark": "area",
+    "encoding": {
+      "x": {
+        "field": "year",
+        "type": "temporal",
+        "timeUnit": "year",
+        "title": "Year"
+      },
+      "y": {
+        "field": "Overall_Mean_Income",
+        "type": "quantitative",
+        "title": "Mean Income"
+      },
+      "tooltip": [
+        {"field": "year", "type": "temporal", "timeUnit": "year","title": "Year"},
+        {"field": "Overall_Mean_Income", "type": "quantitative", "format": ".2f", "title": "Overall Mean Income"}
+      ]
+    },
+    "title": "Overall Mean Household Income Over Time in Malaysia"
+  }
+  

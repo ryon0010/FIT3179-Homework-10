@@ -1,0 +1,73 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width":1000,
+  "data": {"url": "hh_income_state.csv"},
+  
+  "params": [
+    {
+      "name": "state_selection",
+      "bind": { "input": "select", "options": [ 
+          "null",
+          "Johor",
+          "Kedah",
+          "Kelantan",
+          "Kuala Lumpur",
+          "Melaka",
+          "Negeri Sembilan",
+          "Pahang",
+          "Perak",
+          "Perlis",
+          "Penang",
+          "Sabah",
+          "Sarawak",
+          "Selangor",
+          "Terengganu"
+        ],
+        "labels" : [
+          "Show All",
+          "Johor",
+          "Kedah",
+          "Kelantan",
+          "Kuala Lumpur",
+          "Melaka",
+          "Negeri Sembilan",
+          "Pahang",
+          "Perak",
+          "Perlis",
+          "Penang",
+          "Sabah",
+          "Sarawak",
+          "Selangor",
+          "Terengganu"
+        ],
+        "name": "Select State: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "state_selection == null || datum.state == state_selection"}
+  ],
+  "mark": {
+    "type": "area",
+    "line": {"color": "darkgreen"},
+    "color": {
+      "x1": 1,
+      "y1": 1,
+      "x2": 1,
+      "y2": 0,
+      "gradient": "linear",
+      "stops": [
+        { "offset": 0,"color": "white"},
+        { "offset": 1, "color": "darkgreen"}
+      ]
+    }
+  },
+  "encoding": {
+    "x": {"field": "date", "type": "temporal", "title": "Year"},
+    "y": {"aggregate": "mean", "field": "income_mean", "type": "quantitative", "title": "Mean Income"},
+    "tooltip": [
+      {"field": "date", "type": "temporal", "timeUnit": "year","title": "Year"},
+      {"aggregate": "mean", "field": "income_mean", "type": "quantitative", "format": ".2f","title": "Mean Income"}
+    ]
+  }
+}
