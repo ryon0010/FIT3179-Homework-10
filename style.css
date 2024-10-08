@@ -1,9 +1,26 @@
-/* body{
-    background-color: rgb(255, 255, 255);
-    margin: 5vh;
+* {
+    margin: 0;
     padding: 0;
+  }
+  
+body {
+    font-family: "Poppins", sans-serif;
+}
+  
+main {
+    padding-top: 8vh;
+    height: 96vh;
+    margin: 0 12rem;
+    box-sizing: border-box;
+    min-height: fit-content;
+}
+
+section {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-} */
+    gap: 2rem;
+    justify-content: space-between;
+    height: 100%;
+    padding: 2rem 0 2rem 0;
+    height: fit-content;
+}
+

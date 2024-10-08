@@ -46,6 +46,16 @@
           {"field": "income_mean", "type": "quantitative", "title": "Mean Income"}
         ]
       }
+    },{
+      "mark": {
+        "type": "text",
+        "fontSize": 30,
+        "color": "red"
+      },
+      "encoding": {
+        "text": {"field": "income_mean", "type": "quantitative", "format": ".2f"}
+      }
     }
   ]
 }
+
